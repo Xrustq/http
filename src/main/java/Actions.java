@@ -70,7 +70,7 @@ public class Actions {
             csrfToken = matcher.group().replaceAll("csrfToken\":\"", "");
         }
 
-        logger.info("csrfToken=" + csrfToken);
+        logger.info("csrfToken={}", csrfToken);
 
         return csrfToken;
     }
@@ -107,7 +107,7 @@ public class Actions {
                 coordinates.length()).replaceFirst(",", "");
         coordinates = coordinates3.concat((", ").concat(coordinates2));
 
-        logger.info(ADDRESS.concat(". coordinates = ".concat(coordinates)));
+        logger.info("{}. coordinates = {}", ADDRESS, coordinates);
 
         return coordinates;
     }
