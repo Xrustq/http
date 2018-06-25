@@ -3,7 +3,7 @@ import java.io.IOException;
 public class Main {
 
     private static final String URL = "https://yandex.ru/maps/44/izhevsk";
-    private static final String ADDRESS = "Ижевск, Карла Маркса, 246";
+    private static final String ADDRESS = "Ижевск, Карла Маркса, 260";
 
     public static void main(String[] args) throws IOException {
 
@@ -21,6 +21,4 @@ public class Main {
         response2 = actions.doConnectWithParam(ADDRESS, yandexuid, csrfToken);
         coordinates = actions.findCoordinates(response2, ADDRESS);
     }
-
-
 }

@@ -33,8 +33,6 @@ public class Actions {
 
 //        logger.info(response.toString());
 
-        connection.disconnect();
-
         return response;
     }
 
@@ -57,8 +55,6 @@ public class Actions {
         }
 
 //        logger.info(response.toString());
-
-        connection.disconnect();
 
         return response;
     }
