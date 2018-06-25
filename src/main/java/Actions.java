@@ -19,7 +19,7 @@ public class Actions {
         String inputLine;
         StringBuilder response = new StringBuilder();
 
-        java.net.URL obj = new URL(URL);
+        URL obj = new URL(URL);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 
         connection.setRequestMethod("GET");
