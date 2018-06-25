@@ -1,3 +1,6 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Actions {
+
+    private static Logger logger = LoggerFactory.getLogger(Actions.class);
 
     public StringBuilder doConnect(String URL) throws IOException {
 
@@ -25,6 +30,8 @@ public class Actions {
                 response.append(inputLine);
             }
         }
+
+//        logger.info(response.toString());
 
         connection.disconnect();
 
@@ -49,6 +56,8 @@ public class Actions {
             }
         }
 
+//        logger.info(response.toString());
+
         connection.disconnect();
 
         return response;
@@ -65,6 +74,8 @@ public class Actions {
             csrfToken = matcher.group().replaceAll("csrfToken\":\"", "");
         }
 
+        logger.info("csrfToken=" + csrfToken);
+
         return csrfToken;
     }
 
@@ -77,10 +88,12 @@ public class Actions {
             yandexUid = matcher.group();
         }
 
+        logger.info(yandexUid);
+
         return yandexUid;
     }
 
-    public String findCoordinates(StringBuilder response) {
+    public String findCoordinates(StringBuilder response, String ADDRESS) {
         String coordinates = "";
         String coordinates2;
         String coordinates3;
@@ -96,7 +109,9 @@ public class Actions {
         coordinates2 = coordinates.substring(0, coordinates.indexOf(','));
         coordinates3 = coordinates.substring(coordinates.lastIndexOf(','),
                 coordinates.length()).replaceFirst(",", "");
-        coordinates = coordinates3 + ", " + coordinates2;
+        coordinates = coordinates3.concat((", ").concat(coordinates2));
+
+        logger.info(ADDRESS.concat(". coordinates = ".concat(coordinates)));
 
         return coordinates;
     }
